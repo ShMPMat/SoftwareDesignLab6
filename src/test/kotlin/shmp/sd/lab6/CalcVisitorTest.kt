@@ -47,4 +47,11 @@ class CalcVisitorTest {
             0.0
         )
     }
+
+    @Test
+    fun divisionByZeroFailTest() {
+        assertFails {
+            calcVisitor.visitAll(listOf(NumberToken(1), NumberToken(0), Operation(OperationType.Divide)))
+        }
+    }
 }

@@ -117,7 +117,12 @@ class CalcVisitor() : TokenVisitor {
             OperationType.Plus -> firstOperand + secondOperand
             OperationType.Minus -> firstOperand - secondOperand
             OperationType.Multiply -> firstOperand * secondOperand
-            OperationType.Divide -> firstOperand / +secondOperand
+            OperationType.Divide -> {
+                if (secondOperand == 0.0)
+                    throw TokenVisitorException("Division by zero")
+
+                firstOperand / secondOperand
+            }
         }
 
         stack.push(result)
