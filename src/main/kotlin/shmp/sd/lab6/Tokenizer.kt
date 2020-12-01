@@ -28,7 +28,6 @@ data class IterationResult(val state: TokenizerState, val token: Token?, val isC
 class StartNextTokenState : TokenizerState {
     override fun iterate(char: Char): IterationResult =
         when (char) {
-            ' ' -> IterationResult(this, null, true)
             '(' -> IterationResult(this, Brace(BraceType.Left), true)
             ')' -> IterationResult(this, Brace(BraceType.Right), true)
             '+' -> IterationResult(this, Operation(OperationType.Plus), true)
@@ -36,10 +35,11 @@ class StartNextTokenState : TokenizerState {
             '*' -> IterationResult(this, Operation(OperationType.Multiply), true)
             '/' -> IterationResult(this, Operation(OperationType.Divide), true)
             else ->
-                if (char.isDigit())
-                     IterationResult(ReadNumberState(char.toString().toInt()), null, true)
-                else
-                    throw IllegalArgumentException("Unexpected symbol '$char'") //TODO ERROR CLASS
+                when {
+                    char.isWhitespace() -> IterationResult(this, null, true)
+                    char.isDigit() -> IterationResult(ReadNumberState(char.toString().toInt()), null, true)
+                    else -> throw TokenizerException("Unexpected symbol '$char'")
+                }
         }
 }
 

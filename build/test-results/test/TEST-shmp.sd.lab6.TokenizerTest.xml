@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="shmp.sd.lab6.TokenizerTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2020-12-01T07:43:50" hostname="DESKTOP-SOFLN7U" time="0.047">
+  <properties/>
+  <testcase name="tokenizeCorrectInputTest" classname="shmp.sd.lab6.TokenizerTest" time="0.035"/>
+  <testcase name="unexpectedInputFailTest" classname="shmp.sd.lab6.TokenizerTest" time="0.007"/>
+  <testcase name="tokenizeMalformedInputTest" classname="shmp.sd.lab6.TokenizerTest" time="0.0"/>
+  <testcase name="tokenizeBadlyFormattedInputTest" classname="shmp.sd.lab6.TokenizerTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

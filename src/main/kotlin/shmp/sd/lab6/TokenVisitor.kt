@@ -96,9 +96,9 @@ class CalcVisitor() : TokenVisitor {
     public val result: Double
         get() {
             if (stack.size > 1)
-                throw ExceptionInInitializerError("Malformed expression: there are unused numbers left on stack")
+                throw TokenVisitorException("Malformed expression: there are unused numbers left on stack")
             else if (stack.isEmpty())
-                throw ExceptionInInitializerError("Malformed expression: no numbers left on stack")
+                throw TokenVisitorException("Malformed expression: no numbers left on stack")
 
             return stack.peek()
         }
@@ -108,7 +108,7 @@ class CalcVisitor() : TokenVisitor {
     }
 
     override fun visit(token: Brace) {
-        throw IllegalArgumentException("No brackets allowed in RPN")
+        throw TokenVisitorException("No brackets allowed in RPN")
     }
 
     override fun visit(token: Operation) {
